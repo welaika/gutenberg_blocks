@@ -1,5 +1,6 @@
-
 # Gutenberg blocks
+
+![](logo.png)
 
 This collection provide you a pre-built set of Gutemberg blocks using at the same time:
 - [WordPress Gutenberg Editor](https://github.com/WordPress/gutenberg). Version: 5.7+
