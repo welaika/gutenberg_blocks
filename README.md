@@ -8,9 +8,9 @@ This collection provide you a pre-built set of Gutemberg blocks using at the sam
 
 ## HOW TO USE
 
-Each block have its own folder in this repository contains its own files. They can be used placing the files in the right position (explained below) and following `INSTRUCTIONS.md` file inside the block folder.
+Each block have its own folder in this repository contains its own files. They can be used placing the files in the right position (explained below) and following `README.md` file inside the block folder.
 
-**Before continue follow the instructions inside `setup` folder.**
+**Before continue follow the instructions (`README.md` file) inside `setup` folder.**
 
 The only one `.php` file must be copied inside `your_wordless_theme/config/initializers/blocks/`
 
