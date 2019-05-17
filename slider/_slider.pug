@@ -1,0 +1,17 @@
+.slider
+  .swiper-container
+    .slider__pagination.swiper-pagination-bullets
+      .swiper-pagination-bullet.swiper-pagination-bullet-active
+      .swiper-pagination-bullet
+    .slider__button-prev
+    .slider__button-next
+    .swiper-wrapper
+      - if( have_rows('slide') )
+        - while ( have_rows('slide') )
+          - the_row()
+          - $image = wp_get_attachment_image_src(get_sub_field('image'), 'full')[0];
+          .slider__slide.swiper-slide(style="background-image: url('$image')" data-slider-image="$image")
+            section.slider__slide__title
+              - the_sub_field('title')
+            section.slider__slide__image
+              != image_tag($image)

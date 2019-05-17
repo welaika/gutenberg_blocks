@@ -7,6 +7,8 @@ foreach (glob(__DIR__ .'/blocks/*.php') as $filename)
 
 
 function create_blocks() {
+    // Put here the blocks activation lines
+
     // load blocks stylesheets
     $base_block = new BaseBlock();
     $base_block->blocks_styles();

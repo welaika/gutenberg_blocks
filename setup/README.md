@@ -25,3 +25,11 @@ Before start you must have installed and running:
    after `require('./stylesheets/screen.sass');` in `your_wordless_theme/theme/assets/main.js`
 
 That's all.
+
+6. Add this line:
+   ```
+     @import 'blocks'
+   ```
+   inside `your_wordless_theme/theme/assets/stylesheets/screen.sass`
+
+That's all.
