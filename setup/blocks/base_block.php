@@ -1,28 +1,53 @@
 <?php
 
-class BaseBlock {
-    public function __construct($block_name = '', $block_params = array(), $group_params = array(), $fields_params = array()){
+abstract class BaseBlock {
+    public function __construct(){
+        $this->validate_required_constants();
+        $this->register();
+    }
 
-        if (empty($block_name) || empty($block_params) || empty($group_params) || empty($fields_params)) {
-            return;
-        }
-
+    protected function register(){
         if( function_exists('create_acf_block') ) {
-            create_acf_block($block_name, $block_params);
+            create_acf_block($this->name(), $this->params());
         }
 
         if( function_exists('acf_add_local_field_group') ) {
-            acf_add_local_field_group($group_params);
+            acf_add_local_field_group($this->groupParams());
         }
 
         if( function_exists('acf_add_local_field') ) {
-            acf_add_local_field($fields_params);
-
+            acf_add_local_field($this->fieldsParams());
         }
     }
 
-    public function blocks_styles() {
-        wp_register_style("blocks", stylesheet_url("blocks"), false, false);
-        wp_enqueue_style("blocks");
+    protected function validate_required_constants() {
+        $caller = get_called_class();
+        $required = ["$caller::NAME", "$caller::PARAMS", "$caller::FIELD_GROUP_PARAMS", "$caller::FIELDS_PARAMS"];
+
+        foreach ($required as $const) {
+            if (!defined($const)) {
+                throw new Exception("$const constant must be implemented in $caller class.");
+            }
+        }
+
+        return true;
+    }
+
+    protected function name(): string {
+        return self::NAME;
+    }
+    protected function params(): array {
+        return self::PARAMS;
+    }
+    protected function groupParams(): array {
+        return self::FIELD_GROUP_PARAMS;
+    }
+    protected function fieldsParams(): array {
+        return self::FIELDS_PARAMS;
+    }
+
+    public static function enqueue_styles() {
+        wp_register_style("wordless-gutenberg-blocks", stylesheet_url("blocks"), false, false);
+        wp_enqueue_style("wordless-gutenberg-blocks");
     }
 }
