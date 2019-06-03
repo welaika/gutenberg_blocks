@@ -15,7 +15,7 @@ class Slider extends BaseBlock {
         'fields' => [],
         'location' => [[['param' => 'block', 'operator' => '==', 'value' => "acf/". self::NAME]]]
     ];
-    const FIELDS_PARAMS = [
+    const FIELDS_PARAMS = [[
         'parent' => self::NAME,
         'key' => 'slide',
         'label' => 'slide',
@@ -42,5 +42,5 @@ class Slider extends BaseBlock {
                 'required' => 1,
             ]
         ]
-    ];
+    ]];
 }
