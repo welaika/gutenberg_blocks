@@ -16,7 +16,9 @@ abstract class BaseBlock {
         }
 
         if( function_exists('acf_add_local_field') ) {
-            acf_add_local_field($this->fieldsParams());
+            foreach ($this->fieldsParams() as $field) {
+                acf_add_local_field($field);
+            }
         }
     }
 
@@ -34,16 +36,16 @@ abstract class BaseBlock {
     }
 
     protected function name(): string {
-        return self::NAME;
+        return static::NAME;
     }
     protected function params(): array {
-        return self::PARAMS;
+        return static::PARAMS;
     }
     protected function groupParams(): array {
-        return self::FIELD_GROUP_PARAMS;
+        return static::FIELD_GROUP_PARAMS;
     }
     protected function fieldsParams(): array {
-        return self::FIELDS_PARAMS;
+        return static::FIELDS_PARAMS;
     }
 
     public static function enqueue_styles() {
