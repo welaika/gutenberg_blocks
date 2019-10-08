@@ -1,0 +1,11 @@
+- $image_url = get_field('imgtxtimage')['url']
+- $element_class = get_field('imgtxtorder') == 'imgtext' ? '' : 'imageandtext--reverse'
+
+.wrapper
+  .imageandtext(class=$element_class)
+    .imageandtext__img!= image_tag($image_url)
+    .imageandtext__text
+      h2.imageandtext__text__title= get_field('imgtxttitle')
+      h5.imageandtext__text__subtitle= get_field('imgtxtsubtitle')
+      p.imageandtext__text__highlight= get_field('imgtxthighlight')
+      p.imageandtext__text__content= get_field('imgtxtcontent')
