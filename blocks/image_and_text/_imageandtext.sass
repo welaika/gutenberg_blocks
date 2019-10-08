@@ -1,0 +1,29 @@
+.imageandtext
+  align-items: center
+  display: flex
+  flex-flow: row wrap
+  justify-content: space-between
+.imageandtext--reverse
+  flex-direction: row-reverse
+
+.imageandtext__img
+  @media all and (min-width: $portrait-screen)
+    max-width: 45%
+  > img
+    width: 100%
+
+.imageandtext__text
+  @media all and (min-width: $portrait-screen)
+    max-width: 45%
+
+.imageandtext__text__subtitle
+  margin: 0 0 3rem 0
+  font-weight: normal
+  text-transform: uppercase
+
+.imageandtext__text__title
+
+.imageandtext__text__content
+
+.imageandtext__text__highlight
+  font-weight: bold
