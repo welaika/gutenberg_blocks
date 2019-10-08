@@ -1,0 +1,9 @@
+- $topnews = get_field('topnews')
+
+.topnews
+  - foreach ($topnews as $news)
+    .topnews__news
+      small.topnews__news__date= date_i18n("d F Y", strtotime($news->post_date))
+      h4.topnews__news__title!= link_to($news->post_title, get_permalink($news->ID))
+      .topnews__news__abstract= get_field('abstract', $news->ID)
+      != link_to(get_field('cta_text', $news->ID), get_permalink($news->ID), ['class' => 'topnews__news__button'])
